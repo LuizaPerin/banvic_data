@@ -1,0 +1,12 @@
+sources:
+  - name: raw-data
+    schema: banvic_data
+    database: lighthouse-427616
+    tables:
+      - name: agencias
+      - name: clientes
+      - name: colaborador_agencia
+      - name: colaboradores
+      - name: contas
+      - name: propostas_credito
+      - name: transacoes

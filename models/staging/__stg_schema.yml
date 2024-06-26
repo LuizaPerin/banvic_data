@@ -1,0 +1,118 @@
+models:
+  - name: stg_agencias
+    description: "Descrição das agências com nome, informações de endereço, data de abertura e tipo de agência"
+    columns:
+      - name: cod_agencia
+        data_tests:
+        - unique
+        - not_null
+      - name: nome
+      - name: endereco
+      - name: cidade
+      - name: uf
+      - name: data_abertura
+      - name: tipo_agencia
+        data_tests:
+        - accepted_values:
+            values: ['Física', 'Digital']
+
+  - name: stg_clientes
+    descriprion: "Descrição dos clientes com informações pessoais, tipo de cliente e data de inclusão"
+    columns:
+      - name: cod_cliente
+        data_tests:
+        - unique
+        - not_null
+      - name: primeiro_nome
+      - name: ultimo_nome
+      - name: email
+      - name: tipo_cliente
+        data_tests:
+        - accepted_values:
+            values: ['PF', 'PJ']
+      - name: data_inclusao
+      - name: cpf_ou_cnpj
+      - name: data_nascimento
+      - name: endereco
+      - name: cep
+
+  - name: stg_colaborador_agencia
+    description: "Relaciona o código do colaborador com o código da agência em que trabalha"
+    columns:
+      - name: cod_colaborador
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_agencia
+        data_tests:
+        - not_null
+
+  - name: stg_colaboradores
+    description: "Descrição dos colaboradores com informações pessoais"
+    columns:
+      - name: cod_colaborador
+        data_tests:
+        - unique
+        - not_null
+      - name: primeiro_nome
+      - name: ultimo_nome
+      - name: email
+      - name: cpf
+      - name: data_nascimento
+      - name: endereco
+      - name: cep
+
+  - name: stg_contas
+    descriprion: "Informações sobre as contas, relacionando numero da conta, codigo do cliente, codigo da agencia, codigo do colaborador, tipo de conta, data da abertura, saldos e data de ultimo lançamento"
+    columns:
+      - name: num_conta
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_cliente
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_agencia
+      - name: cod_colaborador
+      - name: tipo_conta
+        data_tests:
+        - accepted_values:
+            values: ['PF', 'PJ']
+      - name: data_abertura
+      - name: saldo_total
+      - name: saldo_disponivel
+      - name: data_ultimo_lancamento
+
+  - name: stg_propostas_credito
+    description: "Detalhes das propostas de crédito, incluindo informações da proposta, cliente e colaborador envolvidos"
+    columns:
+      - name: cod_proposta
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_cliente
+      - name: cod_colaborador
+      - name: data_entrada_proposta
+      - name: taxa_juros_mensal
+      - name: valor_proposta
+      - name: valor_entrada
+      - name: valor_prestacao
+      - name: quantidade_parcelas
+      - name: carencia
+      - name: status_proposta
+        data_tests:
+        - accepted_values:
+            values: ['Enviada', 'Aprovada', 'Em análise', 'Validação documentos']
+
+  - name: stg_transacoes
+    description: ""
+    columns:
+      - name: cod_transacao
+        data_tests:
+        - unique
+        - not_null
+      - name: num_conta
+      - name: data_transacao
+      - name: nome_transacao
+      - name: valor_transacao
