@@ -1,0 +1,48 @@
+models:
+  - name: fct_propostas_credito
+    description: "Tabela fato propostas de crédito, incluindo informações da proposta, cliente, agência relacionada e colaborador envolvidos"
+    columns:
+      - name: cod_proposta
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_cliente
+      - name: cod_colaborador
+      - name: cod_agencia
+        data_tests:
+        - not_null
+      - name: data_entrada_proposta
+      - name: taxa_juros_mensal
+      - name: valor_proposta
+      - name: valor_entrada
+      - name: valor_prestacao
+      - name: quantidade_parcelas
+      - name: carencia
+      - name: status_proposta
+        data_tests:
+        - accepted_values:
+            values: ['Enviada', 'Aprovada', 'Em análise', 'Validação documentos']
+
+  - name: fct_transacoes
+    description: ""
+    columns:
+      - name: cod_transacao
+        data_tests:
+        - unique
+        - not_null
+      - name: tipo_conta
+        data_tests:
+        - not_null
+      - name: cod_cliente
+        data_tests:
+        - not_null
+      - name: cod_agencia
+        data_tests:
+        - not_null
+      - name: tipo_agencia
+        data_tests:
+        - not_null
+      - name: num_conta
+      - name: data_transacao
+      - name: nome_transacao
+      - name: valor_transacao
