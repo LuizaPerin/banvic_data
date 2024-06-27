@@ -6,7 +6,7 @@ source_data AS (
         , primeiro_nome
         , ultimo_nome
         , email
-        , cpf
+        , REPLACE(REPLACE(cpf, '.', ''), '-', '') AS cpf
         , data_nascimento
         , endereco
         , REPLACE(cep, '-', '') AS cep
