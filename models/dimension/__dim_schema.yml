@@ -68,6 +68,7 @@ models:
       - name: cod_agencia
       - name: tipo_agencia
         data_tests:
+        - not_null
         - accepted_values:
             values: ['Física', 'Digital']
       - name: cod_colaborador
