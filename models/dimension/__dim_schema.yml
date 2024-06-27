@@ -1,0 +1,84 @@
+models:
+  - name: dim_agencias
+    description: "Tableta dimensão agências com nome, informações de endereço, data de abertura e tipo de agência"
+    columns:
+      - name: cod_agencia
+        data_tests:
+        - unique
+        - not_null
+      - name: nome
+      - name: endereco
+      - name: cidade
+      - name: uf
+      - name: data_abertura
+      - name: tipo_agencia
+        data_tests:
+        - accepted_values:
+            values: ['Física', 'Digital']
+
+  - name: dim_colaboradores
+    description: "Tabela dimensão colaboradores com informações pessoais e relacionando o código da agência"
+    columns:
+      - name: cod_colaborador
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_agencia
+        data_tests:
+        - not_null
+      - name: primeiro_nome
+      - name: ultimo_nome
+      - name: email
+      - name: cpf
+      - name: data_nascimento
+      - name: endereco
+      - name: cep
+
+  - name: dim_clientes
+    descriprion: "Tabela dimensão clientes com informações pessoais, tipo de cliente e data de inclusão"
+    columns:
+      - name: cod_cliente
+        data_tests:
+        - unique
+        - not_null
+      - name: primeiro_nome
+      - name: ultimo_nome
+      - name: email
+      - name: tipo_cliente
+        data_tests:
+        - accepted_values:
+            values: ['PF', 'PJ']
+      - name: data_inclusao
+      - name: cpf_ou_cnpj
+      - name: data_nascimento
+      - name: endereco
+      - name: cep
+
+  - name: dim_contas
+    descriprion: "Tabela dimensão contas, informando numero da conta, codigo do cliente, codigo da agencia, relacioando ao tipo de agencia, codigo do colaborador, tipo de conta, data da abertura, saldos e data de ultimo lançamento"
+    columns:
+      - name: num_conta
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_cliente
+        data_tests:
+        - unique
+        - not_null
+      - name: cod_agencia
+      - name: tipo_agencia
+        data_tests:
+        - accepted_values:
+            values: ['Física', 'Digital']
+      - name: cod_colaborador
+      - name: tipo_conta
+        data_tests:
+        - accepted_values:
+            values: ['PF', 'PJ']
+      - name: data_abertura
+      - name: saldo_total
+      - name: saldo_disponivel
+      - name: data_ultimo_lancamento
+
+  - name: dim_dates
+    descriprion: "Tabela dimensão datas entre 01/01/2010 e 15/01/2023"

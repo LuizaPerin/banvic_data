@@ -34,3 +34,13 @@ models:
     staging:
       +schema: staging
       +materialized: view
+    dimension:
+      +schema: dimension
+      +materialized: table
+    facts:
+      +schema: facts
+      +materialized: table
+
+
+vars:
+    "dbt_date:time_zone": "America/Sao_Paulo"
