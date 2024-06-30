@@ -8,7 +8,10 @@ models:
         - not_null
       - name: cod_cliente
       - name: cod_colaborador
-      - name: cod_agencia
+      - name: cod_agencia_colaborador
+        data_tests:
+        - not_null
+      - name: cod_agencia_cliente
         data_tests:
         - not_null
       - name: data_entrada_proposta

@@ -5,7 +5,8 @@ source_data AS (
         prop.cod_proposta
         , prop.cod_cliente
         , prop.cod_colaborador
-        , cont.cod_agencia
+        , colab.cod_agencia AS cod_agencia_colaborador
+        , cont.cod_agencia AS cod_agencia_cliente
         , prop.data_entrada_proposta
         , prop.taxa_juros_mensal
         , prop.valor_proposta
@@ -16,6 +17,10 @@ source_data AS (
         , prop.status_proposta
     FROM
         {{ ref('stg_propostas_credito')}} as prop
+    LEFT JOIN
+        {{ ref('dim_colaboradores')}}  colab
+        ON
+        prop.cod_colaborador = colab.cod_colaborador
     LEFT JOIN
         {{ ref('dim_contas')}} cont
         ON
