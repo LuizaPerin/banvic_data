@@ -1,0 +1,135 @@
+models:
+  - name: numero_de_clientes_ativos
+    description: "Tabela com as metricas de clientes ativos por data, contendo informação de agência e tipo de agência"
+    columns:
+      - name: month_name
+        data_tests:
+        - not_null
+      - name: year_number
+        data_tests:
+        - not_null
+      - name: clientes_ativos
+        data_tests:
+        - not_null
+      - name: cod_agencia
+        data_tests:
+        - not_null
+      - name: nome
+        data_tests:
+        - not_null
+      - name: tipo_agencia
+        data_tests:
+        - not_null
+        - accepted_values:
+            values: ['Física', 'Digital']
+
+  - name: numero_de_novos_clientes
+    description: "Tabela com as metricas de novos clientes por data, contendo informação de agência e tipo de agência"
+    columns:
+      - name: month_name
+        data_tests:
+        - not_null
+      - name: year_number
+        data_tests:
+        - not_null
+      - name: novos_clientes
+        data_tests:
+        - not_null
+      - name: cod_cliente
+        data_tests:
+        - not_null
+      - name: cod_agencia
+        data_tests:
+        - not_null
+      - name: nome
+        data_tests:
+        - not_null
+      - name: tipo_agencia
+        data_tests:
+        - not_null
+        - accepted_values:
+            values: ['Física', 'Digital']
+
+  - name: metricas_transacoes_mensal
+    description: "Tabela com as metricas de transações por data, contendo informação de cliente, agência e tipo de agência"
+    columns:
+      - name: month_name
+        data_tests:
+        - not_null
+      - name: year_number
+        data_tests:
+        - not_null
+      - name: volume_transacoes
+        data_tests:
+        - not_null
+      - name: valor_total_transacoes
+        data_tests:
+        - not_null
+      - name: valor_medio_transacoes
+        data_tests:
+        - not_null
+      - name: mediana_valor_transacoes
+        data_tests:
+        - not_null
+      - name: cod_cliente
+        data_tests:
+        - not_null
+      - name: cod_agencia
+        data_tests:
+        - not_null
+      - name: nome
+        data_tests:
+        - not_null
+      - name: UF
+        data_tests:
+        - not_null
+      - name: tipo_agencia
+        data_tests:
+        - not_null
+        - accepted_values:
+            values: ['Física', 'Digital']
+
+  - name: metricas_transacoes_clientes
+    description: "Tabela com as metricas de transações por agencia, contendo informação de cliente e tipo de agência"
+    columns:
+      - name: agencia
+        data_tests:
+        - not_null
+      - name: tipo_agencia
+        data_tests:
+        - not_null
+        - accepted_values:
+            values: ['Física', 'Digital']
+      - name: cod_cliente
+        data_tests:
+        - not_null
+      - name: volume_transacoes
+        data_tests:
+        - not_null
+      - name: valor_total_transacoes
+        data_tests:
+        - not_null
+
+  - name: valor_medio_propostas_aprovadas
+    description: "Tabela com o valor medio das propostas de crédito aprovadas por data e por colaborador, contendo informações sobre a agência e tipo de agência"
+    columns:
+      - name: month_name
+        data_tests:
+        - not_null
+      - name: year_number
+        data_tests:
+        - not_null
+      - name: agencia
+        data_tests:
+        - not_null
+      - name: tipo_agencia
+        data_tests:
+        - not_null
+        - accepted_values:
+            values: ['Física', 'Digital']
+      - name: nome_colaborador
+        data_tests:
+        - not_null
+      - name: valor_medio_propostas_aprovadas
+        data_tests:
+        - not_null

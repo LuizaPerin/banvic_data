@@ -40,6 +40,9 @@ models:
     facts:
       +schema: facts
       +materialized: table
+    data_visualization:
+      +schema: data_visualization
+      +materialized: table
 
 
 vars:
